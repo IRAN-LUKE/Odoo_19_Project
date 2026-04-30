@@ -1,2 +1,3 @@
-# Odoo_19_Project
-My Odoo 19 Project
+# My Odoo 19 Project
+
+This is about a Small Clothing Business that will use sale, purchase, inventory and mrp.
