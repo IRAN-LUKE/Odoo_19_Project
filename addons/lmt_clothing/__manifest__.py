@@ -10,6 +10,7 @@
     'license': 'LGPL-3',
     "data": [
         "security/ir.model.access.csv",
+        "data/ir_sequence.xml",
         "views/lmt_product_views.xml",
         "views/lmt_product_type_views.xml",
         "views/lmt_product_size_views.xml",

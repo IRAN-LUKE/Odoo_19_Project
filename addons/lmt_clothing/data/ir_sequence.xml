@@ -4,11 +4,10 @@
         <record id="seq_lmt_purchase_order" model="ir.sequence">
             <field name="name">LMT Purchase Order</field>
             <field name="code">lmt.purchase.order</field>
-            <field name="prefix">PO/%(year)s/%(month)02d/</field>
+            <field name="prefix">LMT-PO/%(year)s/%(month)s/</field>
             <field name="padding">4</field>
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
-            <field name="company_id" ref="base.main_company"/>
         </record>
     </data>
 </odoo>
