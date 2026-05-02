@@ -5,9 +5,21 @@
     'name': 'LMT Clothing',
     'category': 'custom',
     'version': '1.0',
-    'depends': ['base'],
+    'depends': ['base', 'product', 'mail', 'account'],
     'author': 'Lwin Minn Thant',
     'license': 'LGPL-3',
+    "data": [
+        "security/ir.model.access.csv",
+        "views/lmt_product_views.xml",
+        "views/lmt_product_type_views.xml",
+        "views/lmt_product_size_views.xml",
+        "views/lmt_employee_views.xml",
+        "views/res_partner_views.xml",
+        "views/res_users_views.xml",
+        "views/lmt_sale_order_views.xml",
+        "views/lmt_purchase_order_views.xml",
+        "views/menus.xml",
+    ],
 
-'auto_install': False,
+    'auto_install': False,
 }

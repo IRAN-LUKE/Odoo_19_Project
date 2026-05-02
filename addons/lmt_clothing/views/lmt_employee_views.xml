@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <record id="lmt_employee_action" model="ir.actions.act_window">
+        <field name="name">Employees</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="view_id" ref="base.view_partner_tree"/>
+    </record>
+</odoo>

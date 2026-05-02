@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_lmt_product,access.lmt.product,model_lmt_product,,1,1,1,1
+access_lmt_product_type,access.lmt.product.type,model_lmt_product_type,,1,1,1,1
+access_lmt_product_size,access.lmt.product.size,model_lmt_product_size,,1,1,1,1
+
+access_lmt_sale_order,access.lmt.sale.order,model_lmt_sale_order,,1,1,1,1
+access_lmt_sale_order_line,access.lmt.sale.order.line,model_lmt_sale_order_line,,1,1,1,1
+
+access_lmt_purchase_order,access.lmt.purchase.order,model_lmt_purchase_order,,1,1,1,1
+access_lmt_purchase_order_line,access.lmt.purchase.order.line,model_lmt_purchase_order_line,,1,1,1,1

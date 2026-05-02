@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="lmt_product_size_view_list" model="ir.ui.view">
+        <field name="name">lmt_product_size_view_list</field>
+        <field name="model">lmt.product.size</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="short_name"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="lmt_product_size_view_form" model="ir.ui.view">
+        <field name="name">lmt_product_size_view_form</field>
+        <field name="model">lmt.product.size</field>
+        <field name="arch" type="xml">
+            <form string="lmt_product_size_view_form">
+                <group>
+                    <field name="name"/>
+                    <field name="short_name"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="lmt_product_size_action" model="ir.actions.act_window">
+        <field name="name">Size</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lmt.product.size</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
