@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="lmt_product_view_list" model="ir.ui.view">
+        <field name="name">lmt_product_view_list</field>
+        <field name="model">lmt.product</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="clothing_type"/>
+                <field name="clothing_size"/>
+                <field name="qty"/>
+                <field name="is_raw_material"/>
+                <field name="company_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="lmt_product_view_form" model="ir.ui.view">
+        <field name="name">lmt_product_view_form</field>
+        <field name="model">lmt.product</field>
+        <field name="arch" type="xml">
+            <form string="lmt_product_view_form">
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="New"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="is_raw_material"/>
+                        <field name="clothing_type"/>
+                        <field name="clothing_size"/>
+                        <field name="product_id"/>
+                        <field name="company_id"/>
+                        <field name="currency_id"/>
+                        <field name="sale_amount"/>
+                        <field name="purchase_amount"/>
+                        <field name="qty"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="lmt_product_action" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">lmt.product</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>

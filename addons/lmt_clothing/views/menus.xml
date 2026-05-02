@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Root menu -->
+    <menuitem id="lmt_clothing_root" name="Clothing Store" sequence="10"
+              web_icon="lmt_clothing,static/description/logo.png"/>
+
+    <!-- Parent menu: Products -->
+    <menuitem id="lmt_sale_menu"
+              name="Sale"
+              parent="lmt_clothing_root"
+              action="lmt_sale_order_action"
+              sequence="10"/>
+
+    <menuitem id="lmt_purchase_menu"
+              name="Purchase"
+              parent="lmt_clothing_root"
+              action="lmt_purchase_order_action"
+              sequence="20"/>
+
+    <menuitem id="lmt_products_menu"
+              name="Products"
+              parent="lmt_clothing_root"
+              sequence="30"/>
+
+    <menuitem id="lmt_employee_menu"
+              name="Employee"
+              parent="lmt_clothing_root"
+              action="lmt_employee_action"
+              sequence="40"/>
+
+    <menuitem id="lmt_menu_config"
+              name="Configuration"
+              parent="lmt_clothing_root"
+              sequence="50"/>
+
+    <!-- Child menus -->
+    <menuitem id="lmt_product"
+              name="Product"
+              parent="lmt_products_menu"
+              action="lmt_clothing.lmt_product_action"
+              sequence="10"/>
+
+    <menuitem id="lmt_product_type"
+              name="Clothing Category"
+              parent="lmt_products_menu"
+              action="lmt_clothing.lmt_product_type_action"
+              sequence="20"/>
+
+    <menuitem id="lmt_product_size"
+              name="Size"
+              parent="lmt_menu_config"
+              action="lmt_clothing.lmt_product_size_action"
+              sequence="20"/>
+
+</odoo>
