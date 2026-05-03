@@ -3,7 +3,7 @@
 
 
 from . import lmt_product
-from . import lmt_product_type
+from . import lmt_product_category
 from . import lmt_product_size
 from . import res_partner
 from . import res_users

@@ -28,7 +28,6 @@ class LMTPurchaseOrder(models.Model):
         ('draft', 'Draft'),
         ('sent', 'Sent'),
         ('purchase', 'Confirmed'),
-        ('done', 'Locked'),
         ('cancel', 'Cancelled'),
     ], default='draft', tracking=True)
 
@@ -54,7 +53,6 @@ class LMTPurchaseOrder(models.Model):
         if self.state != 'draft':
             raise UserError(_("Only draft orders can be sent."))
         self.state = 'sent'
-        self.message_post(body=_("Purchase order sent to vendor %s.") % self.partner_id.name)
 
     def action_purchase(self):
         self.ensure_one()
@@ -68,23 +66,13 @@ class LMTPurchaseOrder(models.Model):
                 line.lmt_product_id.qty += line.qty
 
         self.state = 'purchase'
-        self.message_post(body=_("Purchase order confirmed. Stock updated for %d product(s).") % len(self.po_line_ids))
-
-    def action_lock(self):
-        self.ensure_one()
-        if self.state != 'purchase':
-            raise UserError(_("Only confirmed orders can be locked."))
-        self.state = 'done'
 
     def action_cancel(self):
         self.ensure_one()
-        if self.state == 'done':
-            raise UserError(_("Locked orders cannot be cancelled."))
         if self.state == 'purchase':
             for line in self.po_line_ids:
                 if line.lmt_product_id and line.qty > 0:
                     line.lmt_product_id.qty -= line.qty
-            self.message_post(body=_("Purchase order cancelled. Stock has been reversed."))
         self.state = 'cancel'
 
     def action_draft(self):
@@ -121,8 +109,6 @@ class LMTPurchaseOrder(models.Model):
             'invoice_line_ids': invoice_line_vals,
             'lmt_purchase_id': self.id,
         })
-
-        self.message_post(body=_("Vendor bill %s created.") % bill.name)
 
         return {
             'type': 'ir.actions.act_window',

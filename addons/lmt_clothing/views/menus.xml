@@ -41,10 +41,10 @@
               action="lmt_clothing.lmt_product_action"
               sequence="10"/>
 
-    <menuitem id="lmt_product_type"
+    <menuitem id="lmt_product_category"
               name="Clothing Category"
               parent="lmt_products_menu"
-              action="lmt_clothing.lmt_product_type_action"
+              action="lmt_clothing.lmt_product_category_action"
               sequence="20"/>
 
     <menuitem id="lmt_product_size"

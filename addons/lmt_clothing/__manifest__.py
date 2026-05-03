@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Part of Odoo. See LICENSE file for full copyright and  licensing details.
 
 {
-    'name': 'LMT Clothing',
+    'name': 'LMT Clothing Store',
     'category': 'custom',
     'version': '1.0',
-    'depends': ['base', 'product', 'mail', 'account'],
+    'depends': ['base', 'product', 'mail', 'account', 'sale'],
     'author': 'Lwin Minn Thant',
     'license': 'LGPL-3',
     "data": [
         "security/ir.model.access.csv",
         "data/ir_sequence.xml",
         "views/lmt_product_views.xml",
-        "views/lmt_product_type_views.xml",
+        "views/lmt_product_category_views.xml",
         "views/lmt_product_size_views.xml",
         "views/lmt_employee_views.xml",
         "views/res_partner_views.xml",

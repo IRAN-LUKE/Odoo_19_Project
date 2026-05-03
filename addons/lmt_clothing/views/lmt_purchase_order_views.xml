@@ -42,15 +42,10 @@
                             class="btn-secondary"
                             invisible="state != 'purchase'"/>
 
-                    <button name="action_lock"
-                            type="object"
-                            string="Lock"
-                            invisible="state != 'purchase'"/>
-
                     <button name="action_cancel"
                             type="object"
                             string="Cancel"
-                            invisible="state in ('done', 'cancel')"/>
+                            invisible="state != 'cancel'"/>
 
                     <button name="action_draft"
                             type="object"
@@ -59,7 +54,7 @@
 
                     <field name="state"
                            widget="statusbar"
-                           statusbar_visible="draft,sent,purchase,done"/>
+                           statusbar_visible="draft,sent,purchase"/>
                 </header>
 
                 <sheet>
