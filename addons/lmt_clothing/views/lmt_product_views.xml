@@ -6,11 +6,12 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name"/>
+                <field name="product_id" optional="hide"/>
                 <field name="clothing_type"/>
                 <field name="clothing_size"/>
                 <field name="qty"/>
-                <field name="is_raw_material"/>
-                <field name="company_id"/>
+                <field name="is_raw_material" widget="boolean_toggle" readonly="1"/>
+                <field name="company_id" optional="hide"/>
             </list>
         </field>
     </record>
@@ -40,6 +41,35 @@
                 </sheet>
                 <chatter/>
             </form>
+        </field>
+    </record>
+
+    <record id="lmt_product_search" model="ir.ui.view">
+        <field name="name">lmt_product_search</field>
+        <field name="model">lmt.product</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="clothing_type"/>
+                <field name="clothing_size"/>
+                <filter name="filter_raw_material"
+                        string="Raw Material"
+                        domain="[('is_raw_material','=',True)]"/>
+                <filter name="filter_finished"
+                        string="Sale Product"
+                        domain="[('is_raw_material','=',False)]"/>
+                <group name="group_by">
+                    <filter name="group_type"
+                            string="Type"
+                            context="{'group_by': 'clothing_type'}"/>
+                    <filter name="group_size"
+                            string="Size"
+                            context="{'group_by': 'clothing_size'}"/>
+                    <filter name="group_company"
+                            string="Company"
+                            context="{'group_by': 'company_id'}"/>
+                </group>
+            </search>
         </field>
     </record>
 

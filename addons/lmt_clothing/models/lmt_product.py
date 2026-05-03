@@ -8,7 +8,7 @@ class LMTProduct(models.Model):
 
     name = fields.Char(required=True, translate=True)
     is_raw_material = fields.Boolean(string="Raw Material", default=False)
-    clothing_type = fields.Many2one('lmt.product.type', required=True)
+    clothing_type = fields.Many2one('lmt.product.category', required=True)
     clothing_size = fields.Many2one('lmt.product.size', required=True)
 
     company_id = fields.Many2one('res.company', default=lambda self: self.env.company)
