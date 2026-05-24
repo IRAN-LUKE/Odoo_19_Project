@@ -15,7 +15,6 @@
     <menuitem id="lmt_purchase_menu"
               name="Purchase"
               parent="lmt_clothing_root"
-              action="lmt_purchase_order_action"
               sequence="20"/>
 
     <menuitem id="lmt_products_menu"
@@ -51,6 +50,18 @@
               name="Size"
               parent="lmt_menu_config"
               action="lmt_clothing.lmt_product_size_action"
+              sequence="20"/>
+
+    <menuitem id="lmt_purchase_purchase_menu"
+              name="Purchase"
+              parent="lmt_purchase_menu"
+              action="lmt_purchase_order_action"
+              sequence="10"/>
+
+    <menuitem id="lmt_bill_menu"
+              name="Bills"
+              parent="lmt_purchase_menu"
+              action="lmt_bill_action"
               sequence="20"/>
 
 </odoo>
