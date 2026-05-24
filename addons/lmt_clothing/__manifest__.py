@@ -5,7 +5,7 @@
     'name': 'LMT Clothing Store',
     'category': 'custom',
     'version': '1.0',
-    'depends': ['base', 'product', 'mail', 'account', 'sale'],
+    'depends': ['base', 'product', 'mail', 'account', 'sale', 'stock', 'purchase', 'hr'],
     'author': 'Lwin Minn Thant',
     'license': 'LGPL-3',
     "data": [
@@ -19,6 +19,7 @@
         "views/res_users_views.xml",
         "views/lmt_sale_order_views.xml",
         "views/lmt_purchase_order_views.xml",
+        "views/lmt_bill_views.xml",
         "views/menus.xml",
     ],
 

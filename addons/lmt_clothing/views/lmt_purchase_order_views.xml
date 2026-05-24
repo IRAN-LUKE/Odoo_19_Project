@@ -13,7 +13,7 @@
                        decoration-info="state == 'draft'"
                        decoration-warning="state == 'sent'"
                        decoration-success="state == 'purchase'"
-                       decoration-muted="state in ('done', 'cancel')"/>
+                       decoration-muted="state == 'cancel'"/>
             </list>
         </field>
     </record>
