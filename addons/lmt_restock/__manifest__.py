@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 {
     'name': 'Low Stock Replenishment System',
     'category': 'custom',
