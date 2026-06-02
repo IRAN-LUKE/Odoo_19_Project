@@ -9,7 +9,6 @@
     <menuitem id="lmt_sale_menu"
               name="Sale"
               parent="lmt_clothing_root"
-              action="lmt_sale_order_action"
               sequence="10"/>
 
     <menuitem id="lmt_purchase_menu"
@@ -34,24 +33,45 @@
               sequence="50"/>
 
     <!-- Child menus -->
+    <!-- Product  -->
     <menuitem id="lmt_product"
               name="Product"
               parent="lmt_products_menu"
-              action="lmt_clothing.lmt_product_action"
+              action="lmt_product_action"
               sequence="10"/>
 
-    <menuitem id="lmt_product_category"
-              name="Clothing Category"
-              parent="lmt_products_menu"
-              action="lmt_clothing.lmt_product_category_action"
-              sequence="20"/>
+    <!-- Configuration -->
+    <!-- Group Menu -->
+    <menuitem id="lmt_cloth_size_group"
+              name="Cloth"
+              parent="lmt_menu_config"
+              sequence="10"/>
 
     <menuitem id="lmt_product_size"
               name="Size"
+              parent="lmt_cloth_size_group"
+              action="lmt_product_size_action"
+              sequence="1"/>
+
+    <menuitem id="lmt_product_category"
+              name="Category"
+              parent="lmt_cloth_size_group"
+              action="lmt_product_category_action"
+              sequence="2"/>
+
+    <!-- Group Menu -->
+    <menuitem id="lmt_job_position_group"
+              name="Job Position"
               parent="lmt_menu_config"
-              action="lmt_clothing.lmt_product_size_action"
               sequence="20"/>
 
+    <menuitem id="lmt_hr_job"
+              name="Jobs"
+              parent="lmt_job_position_group"
+              action="lmt_job_action"
+              sequence="1"/>
+
+    <!--  Purchase  -->
     <menuitem id="lmt_purchase_purchase_menu"
               name="Purchase"
               parent="lmt_purchase_menu"
@@ -62,6 +82,19 @@
               name="Bills"
               parent="lmt_purchase_menu"
               action="lmt_bill_action"
+              sequence="20"/>
+
+    <!--  Sale  -->
+    <menuitem id="lmt_sale_sale_menu"
+              name="Sale"
+              parent="lmt_sale_menu"
+              action="lmt_sale_order_action"
+              sequence="10"/>
+
+    <menuitem id="lmt_invoice_menu"
+              name="Invoices"
+              parent="lmt_sale_menu"
+              action="lmt_invoice_action"
               sequence="20"/>
 
 </odoo>

@@ -7,6 +7,7 @@ class LMTProduct(models.Model):
     _inherit = ['mail.thread']
 
     name = fields.Char(required=True, translate=True)
+    image = fields.Binary()
     is_raw_material = fields.Boolean(string="Raw Material", default=False)
     clothing_type = fields.Many2one('lmt.product.category', required=True)
     clothing_size = fields.Many2one('lmt.product.size', required=True)

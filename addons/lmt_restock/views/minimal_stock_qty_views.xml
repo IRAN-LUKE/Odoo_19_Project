@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="minimal_stock_qty_form_view" model="ir.ui.view">
+        <field name="name">minimal.stock.qty.form.view</field>
+        <field name="model">minimal.stock.qty</field>
+        <field name="arch" type="xml">
+            <form string="Restock Minimal Qty">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="qty"/>
+                    </group>
+                    <group>
+                        <field name="is_active" widget="boolean_toggle"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="minimal_stock_qty_list_view" model="ir.ui.view">
+        <field name="name">minimal.stock.qty.list.view</field>
+        <field name="model">minimal.stock.qty</field>
+        <field name="arch" type="xml">
+            <list string="Restock Minimal Qty">
+                <field name="name"/>
+                <field name="qty"/>
+                <field name="is_active" widget="boolean_toggle"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- ACTION -->
+    <record id="minimal_stock_qty_action" model="ir.actions.act_window">
+        <field name="name">Restock Minimal Qty</field>
+        <field name="res_model">minimal.stock.qty</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+</odoo>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- Config menu group -->
+    <menuitem id="lmt_minimal_qty_restock_group"
+              name="Minimal Qty Restock"
+              parent="lmt_clothing.lmt_menu_config"
+              sequence="30"/>
+
+    <!-- Config > Restock Minimal Qty -->
+    <menuitem id="lmt_minimal_stock_qty_menu"
+              name="Restock Minimal Qty"
+              parent="lmt_minimal_qty_restock_group"
+              action="minimal_stock_qty_action"
+              sequence="1"/>
+
+    <!-- Products menu group -->
+    <menuitem id="lmt_low_qty_product_group"
+              name="Low Qty Replenishment"
+              parent="lmt_clothing.lmt_products_menu"
+              sequence="20"/>
+
+    <!--
+        This menu points to the SERVER ACTION (not a direct act_window).
+        When the user clicks this menu, it runs action_open_low_stock()
+        which refreshes the data automatically before showing the list.
+    -->
+    <menuitem id="lmt_low_qty_product_menu"
+              name="Product Replenishment"
+              parent="lmt_low_qty_product_group"
+              action="low_stock_product_open_action"
+              sequence="1"/>
+
+</odoo>

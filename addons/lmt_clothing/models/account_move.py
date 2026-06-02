@@ -12,3 +12,10 @@ class AccountMoveInherit(models.Model):
         index=True,
     )
 
+    lmt_sale_id = fields.Many2one(
+        'lmt.sale.order',
+        string="LMT Sale Order",
+        ondelete='set null',
+        index=True,
+    )
+
