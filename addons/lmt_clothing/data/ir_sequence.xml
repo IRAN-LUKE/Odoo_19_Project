@@ -9,5 +9,14 @@
             <field name="number_next">1</field>
             <field name="number_increment">1</field>
         </record>
+
+        <record id="seq_lmt_sale_order" model="ir.sequence">
+            <field name="name">LMT Sale Order</field>
+            <field name="code">lmt.sale.order</field>
+            <field name="prefix">LMT-SO/%(year)s/%(month)s/</field>
+            <field name="padding">4</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+        </record>
     </data>
 </odoo>

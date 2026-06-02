@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <!-- List view for Low Stock Products -->
+    <record id="low_stock_product_list_view" model="ir.ui.view">
+        <field name="name">low.stock.product.list.view</field>
+        <field name="model">low.stock.product</field>
+        <field name="arch" type="xml">
+            <list string="Low Stock Products"
+                  create="0"
+                  decoration-danger="qty == 0"
+                  decoration-warning="qty &gt; 0">
+                <field name="lmt_product_id" string="Product"/>
+                <field name="qty" string="Current Qty"/>
+                <field name="minimal_qty" string="Minimal Qty" optional="hide"/>
+                <field name="needed_qty" string="Qty to Order" optional="show"/>
+                <field name="company_id" column_invisible="1"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="low_stock_product_open_action" model="ir.actions.server">
+        <field name="name">Low Stock Products</field>
+        <field name="model_id" ref="model_low_stock_product"/>
+        <field name="state">code</field>
+        <field name="code">
+action = env['low.stock.product'].action_open_low_stock()
+        </field>
+    </record>
+
+    <record id="low_stock_create_po_server_action" model="ir.actions.server">
+        <field name="name">Create Purchase Order</field>
+        <field name="model_id" ref="model_low_stock_product"/>
+        <field name="binding_model_id" ref="model_low_stock_product"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+action = records.action_create_purchase_order()
+        </field>
+    </record>
+
+</odoo>

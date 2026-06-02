@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="base.view_users_form"/>
         <field name="arch" type="xml">
             <xpath expr="//group/field[@name='partner_id']" position="after">
-                <field name="employee_role"/>
+                <field name="employee_job_id"/>
             </xpath>
         </field>
     </record>

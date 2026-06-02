@@ -5,15 +5,6 @@ class ResPartnerInherit(models.Model):
 
     _inherit = 'res.partner'
 
-    employee_role = fields.Selection(
-        [
-            ('sale', 'Salesperson'),
-            ('purchase', 'Purchasing / Dealer'),
-            ('manager', 'Assistant Manager'),
-            ('mrp', 'Manufacturing Officer'),
-        ],
-        related='user_ids.employee_role',
-        store=True,
-        readonly=True
-    )
+    # changed the model user for employee
+    employee_job_id = fields.Many2one('hr.job', string="Job Position", related='user_ids.employee_job_id')
 

@@ -22,7 +22,7 @@ class LMTPurchaseOrder(models.Model):
         comodel_name='res.partner',
         string="Vendor",
         required=True, change_default=True, index=True,
-        tracking=1,
+        tracking=True,
     )
     state = fields.Selection([
         ('draft', 'Draft'),
@@ -35,6 +35,20 @@ class LMTPurchaseOrder(models.Model):
 
     invoice_ids = fields.One2many('account.move', 'lmt_purchase_id', string="Bills")
     invoice_count = fields.Integer(compute='_compute_invoice_count', string="Bills")
+
+    amount_total = fields.Monetary(
+        string="Total",
+        currency_field='currency_id',
+        compute='_compute_amount_total',
+        store=True,
+    )
+
+    @api.depends('po_line_ids.total_amount')
+    def _compute_amount_total(self):
+        for order in self:
+            order.amount_total = sum(
+                order.po_line_ids.mapped('total_amount')
+            )
 
     @api.depends('invoice_ids')
     def _compute_invoice_count(self):
@@ -63,7 +77,9 @@ class LMTPurchaseOrder(models.Model):
 
         for line in self.po_line_ids:
             if line.lmt_product_id and line.qty > 0:
-                line.lmt_product_id.qty += line.qty
+                line.lmt_product_id.write({
+                    'qty': line.lmt_product_id.qty + line.qty
+                })
 
         self.state = 'purchase'
 
@@ -72,7 +88,9 @@ class LMTPurchaseOrder(models.Model):
         if self.state == 'purchase':
             for line in self.po_line_ids:
                 if line.lmt_product_id and line.qty > 0:
-                    line.lmt_product_id.qty -= line.qty
+                    line.lmt_product_id.write({
+                        'qty': line.lmt_product_id.qty - line.qty
+                    })
         self.state = 'cancel'
 
     def action_draft(self):
@@ -95,8 +113,10 @@ class LMTPurchaseOrder(models.Model):
                 'name': line.lmt_product_id.name if line.lmt_product_id else line.product_id.name,
                 'quantity': line.qty,
                 'price_unit': line.price_unit,
-                'discount': (line.discount_amount / (line.price_unit * line.qty) * 100)
-                             if (line.price_unit and line.qty) else 0.0,
+                'discount': (
+                    (line.discount_amount / (line.price_unit * line.qty) * 100)
+                    if line.price_unit and line.qty else 0.0
+                )
             }))
 
         if not invoice_line_vals:
@@ -138,8 +158,8 @@ class LMTPurchaseOrderLine(models.Model):
     lmt_product_id = fields.Many2one('lmt.product', string="Product")
     company_id = fields.Many2one('res.company', default=lambda self: self.env.company)
     currency_id = fields.Many2one('res.currency', related='company_id.currency_id')
-    qty = fields.Integer(string="Quantity", default=1)
-    price_unit = fields.Float(string="Unit Price")
+    qty = fields.Integer(string="Quantity", default=1, tracking=True)
+    price_unit = fields.Float(string="Unit Price", tracking=True)
     discount_amount = fields.Float(string="Disc Amount")
     total_amount = fields.Monetary(
         string="Total Amount",
